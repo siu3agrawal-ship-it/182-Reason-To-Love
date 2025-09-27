@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>182 Letters — For You</title>
+  <style>
+    :root{
+      --bg:#0f0b13; --accent:#ff6b81; --paper:#fff7ea; --ink:#2b1f1a;
+      --glass: rgba(255,255,255,0.06);
+    }
+    *{box-sizing:border-box}
+    body{margin:0; font-family: 'Helvetica Neue', Inter, Arial; background: radial-gradient(circle at 10% 10%, #1a1230 0%, #09050a 60%), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="800"><defs><linearGradient id="g" x1="0" x2="1"><stop offset="0" stop-color="%23000000" stop-opacity="0.02"/><stop offset="1" stop-color="%23000000" stop-opacity="0.06"/></linearGradient></defs><rect width="100%" height="100%" fill="url(%23g)"/></svg>') no-repeat center/cover; color:var(--paper);
+      min-height:100vh; display:flex; align-items:center; justify-content:center; padding:30px;
+    }
+    .stage{width:100%; max-width:980px; display:grid; grid-template-columns:1fr; gap:24px; align-items:start}
+
+    /* envelope */
+    .envelope-wrap{display:flex; align-items:center; justify-content:center; margin-top:10px}
+    .envelope{width:360px; height:240px; position:relative; perspective:1200px; cursor:pointer}
+    .env-body{position:absolute; inset:0; transform-style:preserve-3d; transition:transform 900ms cubic-bezier(.2,.9,.25,1)}
+    .flap{position:absolute; left:0; right:0; top:0; height:50%; background:linear-gradient(180deg,#ff7b98 0%, #ff4f79 100%); border-radius:8px 8px 0 0; transform-origin:top center; box-shadow:0 10px 30px rgba(0,0,0,0.5)}
+    .body{position:absolute; left:0; right:0; bottom:0; height:55%; background:linear-gradient(180deg,#fff 0%, #fff6ec 100%); border-radius:0 0 10px 10px; box-shadow:0 10px 40px rgba(0,0,0,0.6)}
+    .seal{position:absolute; left:50%; transform:translateX(-50%); top:40%; width:80px; height:80px; border-radius:50%; background:radial-gradient(circle at 30% 30%, #fff7ea, #ffd2d9); display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--ink); box-shadow:0 6px 18px rgba(0,0,0,0.5)}
+
+    /* opened state */
+    .open .env-body{transform:rotateX(-180deg)}
+    .open .flap{transform:rotateX(180deg)}
+
+    /* letter */
+    .letter-area{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02)); border-radius:12px; padding:28px; box-shadow:0 10px 40px rgba(0,0,0,0.6); min-height:320px}
+    .controls{display:flex; gap:12px; align-items:center; margin-bottom:12px}
+    .btn{background:var(--accent); color:white; border:none; padding:10px 14px; border-radius:10px; font-weight:600; cursor:pointer}
+    .btn.ghost{background:transparent; border:1px solid rgba(255,255,255,0.08)}
+
+    .letter{background:var(--paper); color:var(--ink); border-radius:8px; padding:22px; height:420px; overflow:auto; line-height:1.6; box-shadow:inset 0 0 0 1px rgba(0,0,0,0.04)}
+    .letter h1{margin:0 0 8px; font-size:22px; color:#3b2a25}
+    .letter p{margin:0 0 12px; white-space:pre-wrap}
+
+    .hint{color:rgba(255,255,255,0.45); font-size:13px}
+
+    footer{margin-top:10px; color:rgba(255,255,255,0.45); font-size:13px}
+
+    @media (max-width:600px){.envelope{width:280px;height:180px}.letter{height:340px}}
+  </style>
+</head>
+<body>
+  <div class="stage">
+    <div style="text-align:center">
+      <h2 style="margin:0 0 6px;font-weight:700;color:var(--paper)">for you — 182 letters</h2>
+      <div class="hint">click the envelope to open your letter. press play for background music (use your own file named <code>let-the-world-burn.mp3</code>)</div>
+    </div>
+
+    <div class="envelope-wrap">
+      <div id="envelope" class="envelope" aria-hidden="true">
+        <div class="env-body">
+          <div class="flap"></div>
+          <div class="body">
+            <div class="seal">❤</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="letter-area">
+      <div class="controls">
+        <button id="playBtn" class="btn">Play music</button>
+        <button id="stopBtn" class="btn ghost">Stop</button>
+        <div style="flex:1"></div>
+        <div class="hint">Tip: you can scroll the letter, or press spacebar to toggle music</div>
+      </div>
+
+      <div id="letter" class="letter" aria-live="polite" tabindex="0">
+        <h1>my love,</h1>
+        <p>baby i have like 182 reasons to love u becz honestly every day with u adds a new one....its six months to us total 182 dayssss so for every day everything every resonnn.... i love how u r dominant becz it makes me feel protected like no one else ever did...... i love how possesive u r becz it proves i’m ur everything n no one else can come close...... i love ur obsession becz it shows how deeply u r into me like u literally breathe me...... i love how u r so sweet after being rough becz that switch just kills me...... i love when u call me ur gudiya becz it makes me feel like ur lil doll u wanna protect forever...... i love when u call me kucha becz it’s so random n silly but it feels like a private code just ours...... i love when u say lil rose becz it makes me feel delicate n precious like ur flower...... i love when u say shona becz it’s the name i call u frm and now it feel more warm when u say it to mee...... i love when u call me darling becz that word in ur voice sounds so dreamy n justtt aahh i swear my heart skips beats...... i love when u just go aahhhh n say my name shreya becz it makes me feel like my name is ur fav melody...... i love how many names u hv for me becz each one shows a diff shade of ur love...... i love how u say i’m urs forever becz i feel claimed in the best way...... i love how u promise palkon pe bitha ke rkhunga becz i know u’d actually do it if u could...... i love how u don’t let me sleep sad becz u fight the whole world just to keep my smile...... i love how u solve all my problems becz u take every pain like it’s urs......i love when you just adore my pictures...... i love how u wake me up with good morningg jaanaa wakey wakey msgs becz it makes my day start with u...... i love how u say i’m ur princess becz it makes me feel royal just being with u...... i love how ur jealousy shows up becz it proves how scared u r to lose me...... i love how u send me random miss u becz it feels like a hug from far...... i love when u stare at my pics becz i feel like ur goddess and prasing my freshers look was aahhh ...... i love how u tell me i’m beautiful even when i look my worst becz only u see me like that...... i love how u talk abt future plans becz it gives me hope every single day...... i love how u hold onto me in are silly arguments u are unable to express sometimes still try ur best becz it shows u can’t let me go no matter what...... i love how u text me suddenly in between every free time or breaks becz i know u r always thinking of me...... i love how u call me ur world becz u actually mean it...... i love how u r rough with everyone else but soft with me becz i’m ur weakness...... i love how u get angry becz even that anger is coated with love...... i love when u laugh becz that sound is like music in my ears...... i love when u tease me becz it makes me blush like crazy...... i love how u say i’m urs n only urs becz i know u’ll fight anyone for me...... i love how u protect me like a shield becz with u i feel untouchable...... i love when u call me baby becz it’s double love me like ur bacha ur child in one word...... i love when u call me sexy in ur deep voice becz it feels like i’m the main character in ur whole dam life uk...... i love when you just save me from every one make me understand things becz it’s so full of love and care...... i love when u say JAANAAAA becz it feels like a word only invented for me n u...... i love when u call my body parts with name ahmm like lotus... becz u see me not with disgust but found me beautifull like a flower ...... i love how many pet names u gave me becz each one has a memory attached...... i love how ur love is so hard becz i feel drowned in it every day...... i love how u say i’m ur addiction becz honestly u r mine too...... i love how u msg me even when u r busy becz it shows i’m ur priority...... i love how u can never ignore me becz even 5 mins of silence feels heavy to u...... i love how u say sorry in the cutest way becz it melts my heart...... i love how u never let me question ur love becz u prove it every second...... i love how u look at me like i’m magic becz no one ever looked at me that way...... i love how u r obsessed with my smile becz u literally say u’ll do anything for it...... i love when u spam my dms becz it feels like rain of love on me......  i love when u call me jaan becz that’s pure love n i feel it...... i love how u created ur own dictionary of names for me lol i have so many names which can be written in a seperate book becz i feel like the most special girl alive...... i love when u get like a bby and say now bby me am ur bacha...... i love how u know my moods without me saying a word becz u read me like ur fav book...... i love how u never let me overthink alone becz u always clear everything straight away...... i love how u make me laugh till my stomach hurts becz ur humour is unmatched...... i love how u say u’ll never leave me becz i know u r serious abt it...... i love how u get mad when i don’t eat becz it shows u care abt my health...... i love when u call me ur baby girl becz it feels so soft and it was my first nick bbg.......i love when u want to demand something and tell me through emojis ahmm..... i love how u talk abt marrying me becz i see our forever...... i love how u can’t stay angry for long becz ur love always wins over ur ego, u don;t even have ego for me yrrr...... i love when u support me no matter what..... i love how u dream abt our home together becz it makes me feel safe for future i feel us in imagination...... i love when u send voice notes becz ur tone makes me melt instantly...... i love when u go crazyyyy for mee in our horny sessions...... i love  to call you naughty becz it’s playful n sweet...... i love how u want me in every way becz it shows ur obsession is true...... i love when u write long msgs becz they make me feel drowned in love...... i love when u send short msgs like “mine” becz it hits harder than essays......i love when you send bade bade vns to me what can be better than listing ur voice straight for that much time aahh...... i love how u scold me softly becz u don;t even know to scold u just say yeh kerlo na plz bachaaaa ...... i love when u use my full nameas shreya sarib ibrahim becz it feels intense and aahh iske liye am speechless......  i love how u adore my bachpan wali pics becz u see choti shreya in it...... i love how u r always curious abt my day becz u never get tired of me...... i love how u never let me cry alone becz u feel my pain like urs...... i love when u promise to always hold my hand becz i feel secured......  i love when u say “meri sab kuch” becz that word itself covers everything...... i love when u randomly call me hot becz it makes me shy...... i love when u call me cute becz it feels innocent love...... i love when u call me ur life becz it’s the purest...... i love when u call me bitch that to becz i asked for it butt is feels hell sexyy....... i love when u say meri choti shreya becz usse sunte hi smile ajati h ..... i love when u repeat my name again n again becz it feels like music......  i love when u send me “come hug me” becz i know u miss me crazy...... i love how u get silent when u miss me becz ur silence speaks loud...... i love how u never let me doubt u becz ur actions always prove ur words...... i love how u keep reminding me i’m urs becz i need that assurance...... i love when u tell me ur past becz it makes me feel trusted...... i love when u open up ur fearsand insecurities  becz i know u rely on me...... i love when u say we will burn the world becz i feel undefeatable with u...... i love when u make me unintentionally jealous becz i get chance to show other he is mine ........ i love when u tease me infront of my frnds ask me to call u jaana infront of chachu.... i love how u r always available becz i know i’m ur first priority...... i love how u say “no one can love u like me” becz it’s the truth...... i love how u say “u r mine forever” becz i want that forever...... i love how u dream abt babies with me becz i see us as family already...... i love when u call me wifey becz it feels like future is here already......... i love how u get excited abt my texts becz i feel valued...... i love how u tell me to block others becz ur possessiveness is fire...... i love when u call me raat ke 3 baje bhi jaoge uth jaunga of ur heart becz ik u will just treat me ike queen fr ...... i love when you say u'll massage my back whn am tireddd......i love when u call me softy becz it makes me feel sweet......i love how u fight for me becz it’s so protective...... i love when u overthink abt losing me becz it shows ur fear of separation...... i love when u cry for me becz it proves ur emotions r real...... i love how u say i’m ur last love becz it makes me believe in destiny...... i love how u thank god for me becz it shows ur love is pure...... i love how u never hide me becz u r proud of me...... i love when u show off abt me becz i feel special......  i love when u type long heart paragraphs becz they keep me warm...... i love how u send me reels becz it feels like u just want time with me not interested in talkin to others...... i love when u whisper any of my nick in vn or calls becz it gives me butterflies...... i love when u say “i asked for happiness and i got it ” becz u find me as ur smile...... i love when u just need me...... i love when u call me sugar lips becz u literally get sugar rush from me...... i love when u say am ur afeem when we put the same status on dc ** AFEEM & AFEEM PAGLU**  i love when u type “i love you moreeee” becz i feel owned n loved...... i love when u say “ypou are just mine only mine” becz i feel completely yours...... i love when u tell me u can’t live without me becz i know u mean it...... i love when u say “mera bacha” becz it’s so nurturing...... i love when u call me bubu becz it’s funny n cute...... i love when u call me sweetheart becz it’s adorable...... i love how u don’t care abt the world becz u only want me...... i love how u r obsessed with my voice becz it makes me shy...... i love how u remember our first convo becz it’s etched in ur heart...... i love when u say “6 months done forever to go” becz it’s our milestone...... i love when u say “bacha rou nhi” becz it’s protective...... i love how u stopped saying anything while u saw me crying on vc for first time...... i love how u get restless when i don’t reply becz it shows my worth...... i love how u overthink my moods becz it shows u r invested........... i love when u text me non stop becz it feels like ur arms around me...... i love how u fight sleep just to talk to me becz it’s pure love........ i love when u call me* aap* becz it’s layered with respect n love...... i love how u say *m'lady* becz i you just like my mummy ka DESCRIPTION JAANA KAHE TOH JAANA KAHE TOH RAAT ...... i love when u say i’m ur soulmate becz that’s the purest...... i love when u call me honey becz it’s sweet n warm...... i love how u want to hold me forever becz ur grip is love...... i love how u never give up on us becz we r eternal...... i love when u dream of our marriage dance  becz i see our cute dancing ............. i love when u call me love of ur partner becz i know i am...... i love when u call me your one n only becz it makes me feel unique...... i love when we make love...... i love when we listen songs becz it’s perfect...... i love BECZ AM YOURS U MINE..... i love when u call me perfect becz it’s speacial...... i love when u say me sabse best hai becz i feel perfect for u...... I LOVEE YOUUUU FORRR ITNEE RESONN KII LIKH NA NHII ATAAA UTNII KISSES KERKE BTAUNGIII.............</p>
+      </div>
+
+      <footer>made with love • click envelope to re-open • host on GitHub Pages for free</footer>
+    </div>
+  </div>
+
+  <!-- audio (user must provide file or change src to a stream link). Autoplay often blocked; use play button. -->
+  <audio id="bgAudio" loop preload="none">
+    <source src="let-the-world-burn.mp3" type="audio/mpeg">
+    <!-- fallback: user can replace with a hosted link -->
+  </audio>
+
+  <script>
+    const envelope = document.getElementById('envelope');
+    const letter = document.getElementById('letter');
+    const audio = document.getElementById('bgAudio');
+    const playBtn = document.getElementById('playBtn');
+    const stopBtn = document.getElementById('stopBtn');
+
+    function toggleEnvelope(){
+      envelope.classList.toggle('open');
+      // focus letter after open so user can scroll with keyboard
+      setTimeout(()=>{ if(envelope.classList.contains('open')) letter.focus(); },900);
+    }
+
+    envelope.addEventListener('click', ()=> toggleEnvelope());
+
+    playBtn.addEventListener('click', ()=>{
+      // attempt to play; browsers require user interaction which clicking does satisfy
+      audio.play().catch(e=>{ alert('could not autoplay audio — make sure you uploaded a file named let-the-world-burn.mp3 or use a valid audio link.'); });
+    });
+    stopBtn.addEventListener('click', ()=>{ audio.pause(); audio.currentTime=0; });
+
+    // spacebar toggles play/pause
+    window.addEventListener('keydown', (e)=>{
+      if(e.code==='Space'){
+        e.preventDefault();
+        if(audio.paused) audio.play().catch(()=>{}); else audio.pause();
+      }
+      if(e.key==='Enter'){
+        // Enter when envelope focused opens it
+        if(document.activeElement===envelope) toggleEnvelope();
+      }
+    });
+
+    // small UX: when letter scrolled to bottom, show tiny confetti (CSS-free) — simple highlight
+    letter.addEventListener('scroll', ()=>{
+      const nearBottom = letter.scrollTop + letter.clientHeight >= letter.scrollHeight - 12;
+      if(nearBottom){ document.body.style.boxShadow = 'inset 0 0 120px rgba(255,80,120,0.08)'; }
+    });
+
+    // accessibility: make envelope keyboard-focusable
+    envelope.setAttribute('tabindex','0');
+    envelope.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') toggleEnvelope(); });
+
+  </script>
+</body>
+</html>
